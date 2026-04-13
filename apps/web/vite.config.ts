@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
 
+const apiTarget = (process.env.VITE_API_URL ?? "https://bugdet-maker-production.up.railway.app").replace(/\/$/, "")
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), tsconfigPaths()],
@@ -16,7 +18,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
+        target: apiTarget,
         changeOrigin: true,
         configure: (proxy) => {
           proxy.on(

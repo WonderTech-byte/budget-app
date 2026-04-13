@@ -1,7 +1,10 @@
-const BASE_URL = "/api/v1";
+const DEFAULT_API_ORIGIN = "https://bugdet-maker-production.up.railway.app";
+const API_ORIGIN = (import.meta.env.VITE_API_URL ?? DEFAULT_API_ORIGIN).replace(/\/$/, "");
+
+export const API_BASE_URL = `${API_ORIGIN}/api/v1`;
 
 async function request(path: string, options: RequestInit = {}) {
-  const res = await fetch(`${BASE_URL}${path}`, {
+  const res = await fetch(`${API_BASE_URL}${path}`, {
     credentials: "include", // 🔹 send cookies
     headers: {
       "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 
@@ -15,7 +16,7 @@ export function ForgotPasswordPage() {
   setIsLoading(true);
 
   try {
-    const res = await fetch("http://localhost:8080/api/v1/auth/initiate-reset-password", {
+    const res = await fetch(`${API_BASE_URL}/auth/initiate-reset-password`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
