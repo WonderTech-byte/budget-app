@@ -1,0 +1,4 @@
+{
+  "buildCommand": "npm install && cd apps/web && npm run build",
+  "startCommand": "npm run preview --workspace=web"
+}
